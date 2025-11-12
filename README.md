@@ -66,6 +66,38 @@ This app was built on top of a template, forked from: [GitHub - freewimoe/stream
 ---
 
 ## 📁 Project Structure
+## 📄 File Descriptions
+
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `jde_app.py`           | Main script to launch the Streamlit app. Loads and processes Excel inputs.                            |
+| `requirements.txt`     | List of required Python packages.                                                                     |
+| `budget_plan.xlsx`     | Primary Excel data source for Budget vs Actuals (BvA), simulating an official corporate finance database. |
+| `account_details.xlsx` | Detailed view of financials, per business unit or account.                                            |
+
+streamlit-ml-dashboard/
+├── app/
+│   ├── app.py                 # Main application entry point
+│   └── app_pages/
+│       ├── __init__.py
+│       ├── 1_00_📘_Project_Summary.py
+│       ├── 1_01_🔎_EDA.py
+│       ├── 1_02_🧠_Train_Model.py
+│       ├── 1_03_📈_Predict.py
+│       └── 1_04_🧪_Model_Metrics.py
+├── data/
+│   ├── raw/                   # Raw data files
+│   ├── processed/             # Processed data files
+│   └── interim/               # Intermediate data files
+├── models/
+│   └── versioned/             # Saved model files
+├── notebooks/                 # Jupyter notebooks for development
+├── src/                       # Source code utilities
+├── tests/                     # Unit tests
+├── requirements.txt           # Python dependencies
+├── runtime.txt               # Python runtime version
+├── Procfile                  # Deployment configuration
+└── README.md                 # This file
 
 Programs/
 ├── data/
