@@ -10,9 +10,21 @@ This repository contains all the necessary files, scripts, and documentation to 
 ### 🔹 `Data/`
 - **`master_file.xlsx`**: Fully preprocessed dataset from `2024-07-03` to `2025-07-30` (weekly snapshots), including exogenous variables. Ready for direct model input.
 - **`master_file.csv`**: Same as above in CSV format. Required by the Streamlit application.
+## 📄 File Descriptions
+
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `master_file.xlsx`     | Fully preprocessed dataset from `2024-07-03` to `2025-07-30` (weekly snapshots), including exogenous variables. Ready for direct model input.                            |
+| `master_file.csv`      | Same as above in CSV format. Required by the Streamlit application.                                                                     |
 
 ### 🔹 `Programs/`
 Contains the data, notebooks, scripts, and modules used throughout the modeling pipeline.
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `Features.py`     | Functions for data loading, preprocessing, normalization, and train-test split.|
+| `Lgbm_architecture.py`      | Functions to build and train LightGBM forecaster, including backtesting, tuning, and evaluation.|
+| `Metrics.py`     | Evaluation metrics (MAE, absolute error, etc.) and utilities for converting scaled results back to original scale.|
+| `Plotting.py` | Visualization functions for model results and metrics.|
 
 #### **Initial Notebooks**
 - **`Data_processing.ipynb`**: Initial data exploration and validation of the PSR files. Identifies header inconsistencies due to data format updates.
@@ -21,17 +33,21 @@ Contains the data, notebooks, scripts, and modules used throughout the modeling 
 - **`Resources_split.ipynb`**: Follow-up notebook to compute split values from forecasted ADD. Completes the **first approach**.
 
 #### **Optimized Files (using modules)**
-- **`Model_v1.ipynb`**: Implements **first approach** using modular code.
-- **`Global_model.py`**: Standalone script to execute the full training and forecasting pipeline using selected parameters and forecast horizon (`steps`).
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `Model_v1.ipynb`     | Implements the forecasting using modular code..|
+| `Global_model.py`      | Standalone script to execute the full training and forecasting pipeline using selected parameters and forecast horizon (`steps`).|
 
 ### 🔹 `Modules/`
-
 This folder contains Python modules for reusable functions across the forecasting pipeline.
 
-- **`Features.py`** *(typo: consider renaming to `Features.py`)*: Functions for data loading, preprocessing, normalization, and train-test split.
-- **`Lgbm_architecture.py`**: Functions to build and train LightGBM forecaster, including backtesting, tuning, and evaluation.
-- **`Metrics.py`**: Evaluation metrics (MAE, absolute error, etc.) and utilities for converting scaled results back to original scale.
-- **`Plotting.py`**: Visualization functions for model results and metrics.
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `Features.py`     | Functions for data loading, preprocessing, normalization, and train-test split.|
+| `Lgbm_architecture.py`      | Functions to build and train LightGBM forecaster, including backtesting, tuning, and evaluation.|
+| `Metrics.py`     | Evaluation metrics (MAE, absolute error, etc.) and utilities for converting scaled results back to original scale.|
+| `Plotting.py` | Visualization functions for model results and metrics.|
+
 
 ---
 
@@ -75,29 +91,6 @@ This app was built on top of a template, forked from: [GitHub - freewimoe/stream
 | `budget_plan.xlsx`     | Primary Excel data source for Budget vs Actuals (BvA), simulating an official corporate finance database. |
 | `account_details.xlsx` | Detailed view of financials, per business unit or account.                                            |
 
-streamlit-ml-dashboard/
-├── app/
-│   ├── app.py                 # Main application entry point
-│   └── app_pages/
-│       ├── __init__.py
-│       ├── 1_00_📘_Project_Summary.py
-│       ├── 1_01_🔎_EDA.py
-│       ├── 1_02_🧠_Train_Model.py
-│       ├── 1_03_📈_Predict.py
-│       └── 1_04_🧪_Model_Metrics.py
-├── data/
-│   ├── raw/                   # Raw data files
-│   ├── processed/             # Processed data files
-│   └── interim/               # Intermediate data files
-├── models/
-│   └── versioned/             # Saved model files
-├── notebooks/                 # Jupyter notebooks for development
-├── src/                       # Source code utilities
-├── tests/                     # Unit tests
-├── requirements.txt           # Python dependencies
-├── runtime.txt               # Python runtime version
-├── Procfile                  # Deployment configuration
-└── README.md                 # This file
 
 Programs/
 ├── data/
