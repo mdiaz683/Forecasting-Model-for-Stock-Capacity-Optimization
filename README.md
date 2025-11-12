@@ -6,23 +6,29 @@ This repository contains all the necessary files, scripts, and documentation to 
 ---
 
 ## 📁 Repository Structure
+## 📁 Repository Structure
+
+### 🧠 Modeling Pipeline
+
+```text
 ├── Data/
-│ ├── master_file.xlsx # Fully preprocessed dataset (2024-07-03 to 2025-07-30), including exogenous variables. Ready for direct model input.
-│ └── master_file.csv # Same dataset in CSV format. Required by the Streamlit application.
+│   ├── master_file.xlsx          # Fully preprocessed dataset (2024-07-03 to 2025-07-30), including exogenous variables. Ready for direct model input.
+│   └── master_file.csv           # Same dataset in CSV format. Required by the Streamlit application.
 │
-├── Programs/ # Contains data, notebooks, scripts, and modules used in the modeling pipeline.
-│ ├── Data_processing.ipynb # Initial data exploration and PSR file validation.
-│ ├── Univariate_forecasting.ipynb # Early data engineering using raw PSR files (2024-07-03 to 2025-07-30).
-│ ├── Forecasting_normalized_h4.ipynb # Full training and prediction workflow (non-modular version).
-│ ├── Resources_split.ipynb # Computes split values from forecasted ADD (first approach).
-│ ├── Model_v1.ipynb # Implements forecasting using modular code.
-│ └── Global_model.py # Standalone script to train and forecast using defined parameters and forecast horizon.
+├── Programs/                     # Contains data, notebooks, scripts, and modules used in the modeling pipeline.
+│   ├── Data_processing.ipynb     # Initial data exploration and PSR file validation.
+│   ├── Univariate_forecasting.ipynb  # Early data engineering using raw PSR files (2024-07-03 to 2025-07-30).
+│   ├── Forecasting_normalized_h4.ipynb  # Full training and prediction workflow (non-modular version).
+│   ├── Resources_split.ipynb     # Computes split values from forecasted ADD (first approach).
+│   ├── Model_v1.ipynb            # Implements forecasting using modular code.
+│   └── Global_model.py           # Standalone script to train and forecast using defined parameters and forecast horizon.
 │
-├── Modules/ # Python modules for reusable functions across the forecasting pipeline.
-│ ├── Features.py # Data loading, preprocessing, normalization, and train-test split.
-│ ├── Lgbm_architecture.py # LightGBM model builder, backtesting, tuning, and evaluation.
-│ ├── Metrics.py # Evaluation metrics and utilities for rescaling results.
-│ └── Plotting.py # Visualization functions for model results and performance metrics.
+├── Modules/                      # Python modules for reusable functions across the forecasting pipeline.
+│   ├── Features.py               # Data loading, preprocessing, normalization, and train-test split.
+│   ├── Lgbm_architecture.py      # LightGBM model builder, backtesting, tuning, and evaluation.
+│   ├── Metrics.py                # Evaluation metrics and utilities for rescaling results.
+│   └── Plotting.py               # Visualization functions for model results and performance metrics.
+```
 
 ### 🔹 `Data/`
 - **`master_file.xlsx`**: Fully preprocessed dataset from `2024-07-03` to `2025-07-30` (weekly snapshots), including exogenous variables. Ready for direct model input.
