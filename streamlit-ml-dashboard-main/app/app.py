@@ -23,8 +23,8 @@ def load_page_class(filename, class_name):
 # Load all page classes
 ProjectSummaryPage = load_page_class("1_00_📘_Project_Summary.py", "ProjectSummaryPage")
 EdaPage = load_page_class("1_01_🔎_EDA.py", "EdaPage")
-TrainModelPage = load_page_class("1_02_🧠_Train_Model copy.py", "TrainModelPage")
-PredictPage = load_page_class("1_03_📈_Predict copy.py", "PredictPage")
+TrainModelPage = load_page_class("1_02_🧠_Train_Model.py", "TrainModelPage")
+PredictPage = load_page_class("1_03_📈_Predict.py", "PredictPage")
 TraceabilityPage = load_page_class("1_04_🧪_Traceability.py", "TraceabilityPage")
 
 st.set_page_config(
