@@ -25,7 +25,6 @@ ProjectSummaryPage = load_page_class("1_00_📘_Project_Summary.py", "ProjectSum
 EdaPage = load_page_class("1_01_🔎_EDA.py", "EdaPage")
 TrainModelPage = load_page_class("1_02_🧠_Train_Model.py", "TrainModelPage")
 PredictPage = load_page_class("1_03_📈_Predict.py", "PredictPage")
-TraceabilityPage = load_page_class("1_04_🧪_Traceability.py", "TraceabilityPage")
 
 st.set_page_config(
     page_title="SKU Demand Projection",
@@ -37,8 +36,7 @@ PAGES = {
     "📘 Project Summary": ProjectSummaryPage.render,
     "🔎 EDA": EdaPage.render,
     "🧠 Train Model": TrainModelPage.render,
-    "📈 Predict": PredictPage.render,
-    "🧪 Traceability": TraceabilityPage.render,
+    "📈 Predict": PredictPage.render
 }
 
 with st.sidebar:

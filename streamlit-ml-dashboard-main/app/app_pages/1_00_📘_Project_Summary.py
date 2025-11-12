@@ -41,20 +41,19 @@ class ProjectSummaryPage:
             - Predictions from CSV files
             - Downloadable prediction results
             - Dynamic table with filters to visualize results
-                    
+            """)
+
         # How to use
         st.subheader("📖 How to Use This App")
         
         steps = [
             ("1️⃣ **Explore Data**", "Upload your CSV file in the EDA section to understand your data"),
             ("2️⃣ **Train Model**", "Use the Train Model section to build and train your ML model"),
-            ("3️⃣ **Make Predictions**", "Generate predictions for new data using the Predict section")        ]
+            ("3️⃣ **Make Predictions**", "Generate predictions for new data using the Predict section"),
+            ("4️⃣ **Evaluate Performance**", "Review model metrics and performance in the Model Metrics section")
+        ]
         
         for step, description in steps:
             st.markdown(f"**{step}**")
             st.markdown(f"   {description}")
             st.markdown("")
-        
-            This dashboard demonstrates a complete machine learning workflow 
-            from data exploration to model deployment in a user-friendly interface.
-            """)
