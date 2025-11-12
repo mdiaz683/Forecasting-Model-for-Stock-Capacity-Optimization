@@ -7,64 +7,54 @@ This repository contains all the necessary files, scripts, and documentation to 
 
 ## 📁 Repository Structure
 
+### 🔹 `Data/`
+- **`master_file.xlsx`**: Fully preprocessed dataset from `2024-07-03` to `2025-07-30` (weekly snapshots), including exogenous variables. Ready for direct model input.
+- **`master_file.csv`**: Same as above in CSV format. Required by the Streamlit application.
+## 📄 File Descriptions
+
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `master_file.xlsx`     | Fully preprocessed dataset from `2024-07-03` to `2025-07-30` (weekly snapshots), including exogenous variables. Ready for direct model input.                            |
+| `master_file.csv`      | Same as above in CSV format. Required by the Streamlit application.                                                                     |
+
 ### 🔹 `Programs/`
-
 Contains the data, notebooks, scripts, and modules used throughout the modeling pipeline.
-
-#### **Preprocessed Data Files**
-- **`Features_py.xlsx`**: Fully preprocessed dataset from `2024-07-03` to `2025-07-30`, including exogenous variables. Ready for direct model input.
-- **`Features_py.csv`**: Same as above in CSV format. Required by the Streamlit application.
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `Features.py`     | Functions for data loading, preprocessing, normalization, and train-test split.|
+| `Lgbm_architecture.py`      | Functions to build and train LightGBM forecaster, including backtesting, tuning, and evaluation.|
+| `Metrics.py`     | Evaluation metrics (MAE, absolute error, etc.) and utilities for converting scaled results back to original scale.|
+| `Plotting.py` | Visualization functions for model results and metrics.|
 
 #### **Initial Notebooks**
 - **`Data_processing.ipynb`**: Initial data exploration and validation of the PSR files. Identifies header inconsistencies due to data format updates.
 - **`Univariate_forecasting.ipynb`**: Early data engineering steps using raw PSR files from `data/` folder. Time range: `2024-07-03` to `2025-07-30`.
-- **`Forecasting_normalized_h4.ipynb`**: Full training and prediction workflow in notebook format (without using external modules). Covers the **first approach** (`series = Product ID`).
+- **`Forecasting_normalized_h4.ipynb`**: Full training and prediction workflow in notebook format (without using external modules).
 - **`Resources_split.ipynb`**: Follow-up notebook to compute split values from forecasted ADD. Completes the **first approach**.
-- **`Resources_split_M1.ipynb`**: Same process as above but implements the **second approach** (`series = Brand||Resource ID`), directly forecasting split values.
 
-#### **Optimized Notebooks (using modules)**
-- **`Model_v1.ipynb`**: Implements **first approach** using modular code.
-- **`Model_v2.ipynb`**: Implements **second approach** using modular code.
-- **`Model_v1_h8.ipynb`** : Trains and predicts using a horizon of 8 weeks. Useful for side-by-side comparison of outputs.
-- **`Model_v2_h8.ipynb`** : Trains and predicts using a horizon of 8 weeks.
-
-> 🔹 *First approach*: forecast ADD → derive split values  
-> 🔹 *Second approach*: directly forecast split values
-
-#### **Other Python Scripts**
-- **`Global_model.py`**: Standalone script to execute the full training and forecasting pipeline using selected parameters and forecast horizon (`steps`).
-
----
+#### **Optimized Files (using modules)**
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `Model_v1.ipynb`     | Implements the forecasting using modular code..|
+| `Global_model.py`      | Standalone script to execute the full training and forecasting pipeline using selected parameters and forecast horizon (`steps`).|
 
 ### 🔹 `Modules/`
-
 This folder contains Python modules for reusable functions across the forecasting pipeline.
 
-- **`Features.py`** *(typo: consider renaming to `Features.py`)*: Functions for data loading, preprocessing, normalization, and train-test split.
-- **`Lgbm_architecture.py`**: Functions to build and train LightGBM forecaster, including backtesting, tuning, and evaluation.
-- **`Metrics.py`**: Evaluation metrics (MAE, absolute error, etc.) and utilities for converting scaled results back to original scale.
-- **`Plotting.py`**: Visualization functions for model results and metrics.
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `Features.py`     | Functions for data loading, preprocessing, normalization, and train-test split.|
+| `Lgbm_architecture.py`      | Functions to build and train LightGBM forecaster, including backtesting, tuning, and evaluation.|
+| `Metrics.py`     | Evaluation metrics (MAE, absolute error, etc.) and utilities for converting scaled results back to original scale.|
+| `Plotting.py` | Visualization functions for model results and metrics.|
 
-#### **Utilities**
-- **`Series_status.py`**: Script to generate the `series_status.xlsx`/`.csv` file. Tracks series lifecycle (appearance/disappearance), useful for production traceability.
 
 ---
 
-## 📊 Streamlit Dashboard
+## Streamlit Dashboard
 
 ### 🔸 Location: `streamlit-ml-dashboard-main/`
-
-Forked from:  
-[GitHub - freewimoe/streamlit-ml-dashboard](https://github.com/freewimoe/streamlit-ml-dashboard)
-
-#### **Customizations**
-- Added `Modules/` folder for backend functionality.
-- Created custom pages:
-  - `Train_Model_Copy`
-  - `Predict_Copy`
-- **Project Summary** and **Traceability** pages need to be updated:
-  - *Project Summary:* should include updated app usage instructions.
-  - *Traceability:* intended to display `series_status` table and historic graphs to monitor model in production.
+This app was built on top of a template, forked from: [GitHub - freewimoe/streamlit-ml-dashboard](https://github.com/freewimoe/streamlit-ml-dashboard)
 
 #### **How to Run the Dashboard**
 
@@ -88,32 +78,19 @@ Forked from:
 - **Forecasting Library**: [Skforecast](https://skforecast.org/latest/)
 - **Model**: LightGBM
 - **Forecasting Horizon**: Adjustable, with examples using H=4 and H=8 weeks
-- **Custom GPT**: A ChatGPT agent has been fine-tuned for working with Skforecast. (Access may require permission) [ChatGPT - Skforecast Helper](https://chatgpt.com/g/g-68a638426e5881918532c83e4472be23-skforecast-helper)
-
----
-
-## 📌 Next Steps & Automation Plan
-
-The following steps are planned to automate the entire pipeline from data ingestion to forecast generation:
-
-1. **Automate daily data ingestion**
-   - Create a script to clean and preprocess Excel files received daily from the OAC platform via email.
-   - Coordinate with **Brian** to redirect those emails to **Sanjana**.
-
-2. **Integrate with Power Automate**
-   - Combine preprocessing with Power Automate flow.
-   - Collaborate with **Tanner**, **Ilicia**, and **Brian** for implementation.
-
-3. **Unify ingestion + forecasting**
-   - Link automated preprocessing to model training and prediction.
-   - Aim to automate the full cycle dynamically via the Streamlit app.
-
-4. **Build traceability system**
-   - Develop a graph or logging mechanism to track forecast history and evaluate performance over time.
 
 ---
 
 ## 📁 Project Structure
+## 📄 File Descriptions
+
+| File                   | Description                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `jde_app.py`           | Main script to launch the Streamlit app. Loads and processes Excel inputs.                            |
+| `requirements.txt`     | List of required Python packages.                                                                     |
+| `budget_plan.xlsx`     | Primary Excel data source for Budget vs Actuals (BvA), simulating an official corporate finance database. |
+| `account_details.xlsx` | Detailed view of financials, per business unit or account.                                            |
+
 
 Programs/
 ├── data/
@@ -166,11 +143,4 @@ Programs/
 │   │   └── models/                   # Stores trained model objects
 │   │       └── versioned/v1/
 │   │           └── latest.joblib     # Exported LightGBM model for prediction
-│
-│   ├── data/raw/                     # Sample data from template (not used)
-│   │   ├── sample_house_prices.csv
-│   │   └── sample_iris.csv
-│
-│   └── .spectory/, streamlit/        # Supporting folders from the original template
-│
-└── venv_psr/                          # Python virtual environment for the project (local dependencies)
+
